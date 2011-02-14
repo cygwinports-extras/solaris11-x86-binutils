@@ -1,0 +1,5 @@
+category: Devel
+requires: libintl8 zlib0
+sdesc: "Binutils for Solaris 11 x86 toolchain"
+ldesc: "The GNU Binutils are a collection of binary tools, including the 
+assembler, linker, and other compiler tools."

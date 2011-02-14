@@ -1,0 +1,20 @@
+TOOLCHAIN_TARGET="i386-pc-solaris2.11"
+ORIG_PN="binutils"
+inherit toolchain
+
+DESCRIPTION="Bintils for Solaris x86"
+HOMEPAGE="http://www.gnu.org/software/binutils/"
+case ${PV[3]} in
+[5-9][0-9])
+	SRC_URI="mirror://sourceware/binutils/snapshots/binutils-${PV}.tar.bz2" ;;
+*)	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.bz2" ;;
+esac
+PATCH_URI="config-rpath.patch"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	# conflicts with native binutils
+	rm -fr ${D}/usr/lib/ ${D}/usr/share/{info,locale}/
+}
